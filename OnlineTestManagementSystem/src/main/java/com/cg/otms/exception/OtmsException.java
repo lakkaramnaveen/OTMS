@@ -7,7 +7,7 @@ public class OtmsException extends Exception {
 	{
 		super(message);
 	}
-	
+
 	public OtmsException()
 	{
 		super();

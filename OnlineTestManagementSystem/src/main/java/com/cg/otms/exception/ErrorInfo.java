@@ -5,7 +5,7 @@ public class ErrorInfo {
 	private LocalDateTime timestamp;
 	private String errorMessage;
 	private String details;
-	
+
 	public ErrorInfo(LocalDateTime timestamp, String errorMessage, String details) {
 		super();
 		this.timestamp = timestamp;
@@ -33,7 +33,7 @@ public class ErrorInfo {
 	public void setDetails(String details) {
 		this.details = details;
 	}
-	
-	
-	
+
+
+
 }

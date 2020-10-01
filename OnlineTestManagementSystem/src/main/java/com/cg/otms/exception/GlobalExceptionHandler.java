@@ -18,13 +18,13 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(OtmsException.class)
 	public @ResponseBody ResponseEntity<ErrorInfo>  handleException(OtmsException ex,HttpServletRequest req)
 	{
-		
-		 String message=ex.getMessage();
-		 String uri= req.getRequestURI();
-		 
-		 ErrorInfo  obj = new ErrorInfo(LocalDateTime.now(),message,uri);
-		 return new ResponseEntity<>(obj,HttpStatus.NOT_FOUND);
+
+		String message=ex.getMessage();
+		String uri= req.getRequestURI();
+
+		ErrorInfo  obj = new ErrorInfo(LocalDateTime.now(),message,uri);
+		return new ResponseEntity<>(obj,HttpStatus.NOT_FOUND);
 	}
-	
-	
+
+
 }

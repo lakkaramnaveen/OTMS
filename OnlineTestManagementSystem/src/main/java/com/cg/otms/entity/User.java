@@ -9,33 +9,60 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
-@Entity
-@Table(name = "user_table")
+@Entity//it will specify it as entity class for bean configuration
+@Table(name = "user_table")//it map table by name to database
 public class User {
-	@Id
+	//bean class with good encapsulation 
+	//with private fields and public getters and setters
+	@Id//primary key
 	@GeneratedValue(generator="mygen",strategy=GenerationType.SEQUENCE)
+	//provides the requirements for id generation with name and type
 	@SequenceGenerator(name="mygen",sequenceName="user_seq",allocationSize=1)
-	@Column(name="user_id")
-	private int userId ;
-	
-	@Column(name="user_name",length=16)
+	//it will specify the sequence
+	@Column(name="user_id")//maps the particular column from table
+	private Long userId ;
+
+	@Column(name="user_name",length=16)//length is mentioned only when we use string
 	private String userName ;
-	
+
 	@Column(name="user_test")
-	private int userTest ;
-	
+	private Long userTest ;
+
 	@Column(name="is_admin")
 	private boolean isAdmin ;
-	
+
 	@Column(name="user_password",length=16)
 	private String userPassword;
-	
 
-	public int getUserId() {
+
+	
+	
+	public User() {
+		super();
+	}
+
+	public User(Long userId, String userName, Long userTest, boolean isAdmin, String userPassword) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.userTest = userTest;
+		this.isAdmin = isAdmin;
+		this.userPassword = userPassword;
+	}
+	public User( String userName, Long userTest, boolean isAdmin, String userPassword) {
+		super();
+		this.userName = userName;
+		this.userTest = userTest;
+		this.isAdmin = isAdmin;
+		this.userPassword = userPassword;
+	}
+
+	//getters and setters
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
@@ -47,11 +74,11 @@ public class User {
 		this.userName = userName;
 	}
 
-	public int getUserTest() {
+	public Long getUserTest() {
 		return userTest;
 	}
 
-	public void setUserTest(int userTest) {
+	public void setUserTest(Long userTest) {
 		this.userTest = userTest;
 	}
 
