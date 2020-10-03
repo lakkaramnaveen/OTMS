@@ -20,13 +20,13 @@ public class User {
 	@SequenceGenerator(name="mygen",sequenceName="user_seq",allocationSize=1)
 	//it will specify the sequence
 	@Column(name="user_id")//maps the particular column from table
-	private Long userId ;
+	private long userId ;
 
 	@Column(name="user_name",length=16)//length is mentioned only when we use string
 	private String userName ;
 
 	@Column(name="user_test")
-	private Long userTest ;
+	private long userTest ;
 
 	@Column(name="is_admin")
 	private boolean isAdmin ;
@@ -35,13 +35,13 @@ public class User {
 	private String userPassword;
 
 
-	
-	
+
+
 	public User() {
 		super();
 	}
 
-	public User(Long userId, String userName, Long userTest, boolean isAdmin, String userPassword) {
+	public User(long userId, String userName, long userTest, boolean isAdmin, String userPassword) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -58,11 +58,11 @@ public class User {
 	}
 
 	//getters and setters
-	public Long getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
@@ -74,11 +74,11 @@ public class User {
 		this.userName = userName;
 	}
 
-	public Long getUserTest() {
+	public long getUserTest() {
 		return userTest;
 	}
 
-	public void setUserTest(Long userTest) {
+	public void setUserTest(long userTest) {
 		this.userTest = userTest;
 	}
 

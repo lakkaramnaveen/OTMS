@@ -14,7 +14,7 @@ import com.cg.otms.exception.OtmsException;
 public class UserServiceImpl implements IUserService {
 
 
-	private String str = "NOT FOUND";
+	private String str = "USER NOT FOUND";
 	// inorder to achieve loose coupling as we can have many implementation objects
 	// from one service
 
@@ -24,7 +24,7 @@ public class UserServiceImpl implements IUserService {
 	IUserDao userDao;
 
 	@Override
-	public User addUser(User user) {
+	public User addUser(User user) throws OtmsException {
 		return userDao.save(user);
 	}
 	// we implement abstract classes from service interface by overriding those
@@ -39,33 +39,31 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public User getUserByName(String userName) throws OtmsException {
-		if (userDao.getUserByName(userName)==null) {
+		if (userDao.getUserByName(userName)==null) 
 			throw new OtmsException(str);
-			// it is handled by global exception handler
-		}
+		// it is handled by global exception handler
+
 		return userDao.getUserByName(userName);//dao method will be invoked
 	}
 
 	@Override
-	public boolean validateAdmin(String userName, String userPassword) {
+	public boolean validateAdmin(String userName, String userPassword) throws OtmsException {
 
-		boolean isValid=false;
 		User user=userDao.getUserByName(userName);
-		if(user.getUserPassword().equals(userPassword) && user.isAdmin()) {
-			isValid=true;
-		}
-		return isValid;
+		if(!(user.getUserPassword().equals(userPassword) && user.isAdmin())) 
+			throw new OtmsException(str);
+
+		return true;
 	}
 
 	@Override
-	public boolean validateUser(String userName, String userPassword) {
-
-		boolean isValid=false;
+	public boolean validateUser(String userName, String userPassword) throws OtmsException {
 		User user=userDao.getUserByName(userName);
-		if(user.getUserPassword().equals(userPassword) && !user.isAdmin()) {
-			isValid=true;
-		}
-		return isValid;
+		if(!(user.getUserPassword().equals(userPassword) && !user.isAdmin())) 
+			throw new OtmsException(str);
+
+		return true;
+
 	}
 
 }

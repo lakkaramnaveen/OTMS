@@ -30,7 +30,7 @@ public class UserController {
 	// post is used when we send data and it will not appear on the url
 	// requestbody maps httprequest json format data from the client to the local
 	// object user
-	public ResponseEntity<User> addUser(@RequestBody User user){
+	public ResponseEntity<User> addUser(@RequestBody User user) throws OtmsException {
 		return new ResponseEntity<>(userService.addUser(user),HttpStatus.OK);
 	}
 
@@ -51,13 +51,13 @@ public class UserController {
 		return userService.getUserByName(userName);
 	}
 
-	@GetMapping("/login/admin/{userName}/{userPassword}")
+	@GetMapping("/user/login/admin/{userName}/{userPassword}")
 	// inorder to handle the exception we use throws declaration
 	public ResponseEntity<Boolean> validateAdmin(@PathVariable String userName, @PathVariable String userPassword) throws OtmsException {
 		boolean isValid =  userService.validateAdmin(userName,userPassword);
 		return new ResponseEntity<Boolean>(isValid,HttpStatus.ACCEPTED);
 	}
-	@GetMapping("/login/user/{userName}/{userPassword}")
+	@GetMapping("/user/login/{userName}/{userPassword}")
 	public ResponseEntity<Boolean> validateUser(@PathVariable String userName, @PathVariable String userPassword) throws OtmsException {
 		boolean isValid =  userService.validateUser(userName,userPassword);
 		return new ResponseEntity<Boolean>(isValid, HttpStatus.ACCEPTED);

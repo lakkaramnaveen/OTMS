@@ -30,7 +30,7 @@ class OnlineTestManagementApplicationTests {
 	}
 
 	@Test
-	void addUserTest() {
+	void addUserTest() throws OtmsException {
 
 		User user = new User("nani",1000012L, true ,"1234");
 		//when is used to check whether the given method is returning the expected result
