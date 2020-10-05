@@ -1,6 +1,6 @@
 package com.cg.otms.exception;
 import java.time.LocalDateTime;
-
+//simple bean class for error message
 public class ErrorInfo {
 	private LocalDateTime timestamp;
 	private String errorMessage;

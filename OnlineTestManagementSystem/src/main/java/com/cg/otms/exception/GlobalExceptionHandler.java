@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 
-@ControllerAdvice
+@ControllerAdvice //this exception class will be shared across all the controllers 
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler(OtmsException.class)
