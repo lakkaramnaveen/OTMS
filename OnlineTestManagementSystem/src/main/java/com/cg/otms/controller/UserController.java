@@ -26,7 +26,7 @@ public class UserController {
 	IUserService userService;
 	// we cannot create object to an interface but we can have a reference
 
-	@PostMapping("/user/add")
+	@PostMapping("/user/")
 	// post is used when we send data and it will not appear on the url
 	// requestbody maps httprequest json format data from the client to the local
 	// object user
@@ -42,7 +42,7 @@ public class UserController {
 		// we can also return normal list of users object but as it is a web request we use
 		// response entity
 		// it will contain response body and http status code like 200,404...
-		return new ResponseEntity<List<User>>(userService.getAllUsers(),HttpStatus.OK) ;
+		return new ResponseEntity<>(userService.getAllUsers(),HttpStatus.OK) ;
 	}
 
 	@GetMapping("/user/{userName}")
@@ -54,13 +54,11 @@ public class UserController {
 	@GetMapping("/user/login/admin/{userName}/{userPassword}")
 	// inorder to handle the exception we use throws declaration
 	public ResponseEntity<Boolean> validateAdmin(@PathVariable String userName, @PathVariable String userPassword) throws OtmsException {
-		boolean isValid =  userService.validateAdmin(userName,userPassword);
-		return new ResponseEntity<Boolean>(isValid,HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(userService.validateAdmin(userName,userPassword),HttpStatus.ACCEPTED);
 	}
 	@GetMapping("/user/login/{userName}/{userPassword}")
 	public ResponseEntity<Boolean> validateUser(@PathVariable String userName, @PathVariable String userPassword) throws OtmsException {
-		boolean isValid =  userService.validateUser(userName,userPassword);
-		return new ResponseEntity<Boolean>(isValid, HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(userService.validateUser(userName,userPassword), HttpStatus.ACCEPTED);
 	}
 
 

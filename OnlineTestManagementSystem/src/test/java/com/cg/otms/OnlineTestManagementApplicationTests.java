@@ -26,10 +26,6 @@ class OnlineTestManagementApplicationTests {
 	private IUserDao userDao;
 
 	@Test
-	void contextLoads() {
-	}
-
-	@Test
 	void addUserTest() throws OtmsException {
 
 		User user = new User("nani",1000012L, true ,"1234");

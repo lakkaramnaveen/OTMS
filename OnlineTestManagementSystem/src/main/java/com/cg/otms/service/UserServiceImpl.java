@@ -63,7 +63,6 @@ public class UserServiceImpl implements IUserService {
 			throw new OtmsException(str);
 
 		return true;
-
 	}
 
 }
