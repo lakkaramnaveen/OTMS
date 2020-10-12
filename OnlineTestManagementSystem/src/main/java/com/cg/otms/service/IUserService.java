@@ -11,5 +11,5 @@ public interface IUserService {
 	public List<User> getAllUsers() throws OtmsException;
 	public boolean validateAdmin(String userName, String userPassword) throws OtmsException;
 	public boolean validateUser(String userName, String userPassword) throws OtmsException;
-
+//	public double getResult(long testId);
 }

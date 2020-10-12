@@ -17,6 +17,7 @@ import com.cg.otms.exception.OtmsException;
 import com.cg.otms.service.IUserService;
 
 @SpringBootTest
+//junit testing 
 class OnlineTestManagementApplicationTests {
 
 	@Autowired

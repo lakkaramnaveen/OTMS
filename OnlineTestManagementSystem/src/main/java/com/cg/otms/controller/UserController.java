@@ -2,6 +2,8 @@ package com.cg.otms.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +28,10 @@ public class UserController {
 	IUserService userService;
 	// we cannot create object to an interface but we can have a reference
 
+
+	Logger logger = LoggerFactory.getLogger(UserController.class);
+
+
 	@PostMapping("/user/")
 	// post is used when we send data and it will not appear on the url
 	// requestbody maps httprequest json format data from the client to the local
@@ -38,7 +44,6 @@ public class UserController {
 	@GetMapping("/user/all")
 	public ResponseEntity<List<User>> getAllUsers() throws OtmsException{
 		// using service we call getAllUsers method which will return
-
 		// we can also return normal list of users object but as it is a web request we use
 		// response entity
 		// it will contain response body and http status code like 200,404...
@@ -54,12 +59,20 @@ public class UserController {
 	@GetMapping("/user/login/admin/{userName}/{userPassword}")
 	// inorder to handle the exception we use throws declaration
 	public ResponseEntity<Boolean> validateAdmin(@PathVariable String userName, @PathVariable String userPassword) throws OtmsException {
+		logger.info("This is the Admin Login info logs"); 
 		return new ResponseEntity<>(userService.validateAdmin(userName,userPassword),HttpStatus.ACCEPTED);
 	}
 	@GetMapping("/user/login/{userName}/{userPassword}")
 	public ResponseEntity<Boolean> validateUser(@PathVariable String userName, @PathVariable String userPassword) throws OtmsException {
-		return new ResponseEntity<>(userService.validateUser(userName,userPassword), HttpStatus.ACCEPTED);
+		logger.info("This is the User Login info logs");
+		return new ResponseEntity<>(userService.validateUser(userName,userPassword),HttpStatus.ACCEPTED);
 	}
+
+	//we will get the results
+	//	@GetMapping("/user/result/{testId}")
+	//	public double getResult(@PathVariable long testId) {
+	//		return userService.getResult(testId);
+	//	}
 
 
 }

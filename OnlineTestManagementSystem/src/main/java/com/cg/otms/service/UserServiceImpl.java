@@ -4,7 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
 import com.cg.otms.dao.IUserDao;
+import com.cg.otms.entity.Test;
 import com.cg.otms.entity.User;
 import com.cg.otms.exception.OtmsException;
 
@@ -22,6 +25,9 @@ public class UserServiceImpl implements IUserService {
 	// WebApplicationContext
 	@Autowired
 	IUserDao userDao;
+	
+//	@Autowired
+//	RestTemplate restTemplate;
 
 	@Override
 	public User addUser(User user) throws OtmsException {
@@ -64,5 +70,13 @@ public class UserServiceImpl implements IUserService {
 
 		return true;
 	}
-
+	
+//	@Override
+//	public double getResult(long testId) {
+//		Test test = restTemplate.getForObject("url"+testId,Test.class);
+//		double result = 0;
+//		result = restTemplate.getForObject("url"+testId,Double.class);
+//		test.setTestMarksScored(result);
+//		return test.getTestMarksScored();
+//	}
 }
