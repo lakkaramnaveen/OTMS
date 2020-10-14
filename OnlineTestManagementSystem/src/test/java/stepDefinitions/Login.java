@@ -33,23 +33,18 @@ public class Login {
 
 	@When("^User enters username and password$")
 	public void user_enters_username_and_password() throws Throwable {
-		driver.findElement(By.id("username")).sendKeys("rahul k");
-		driver.findElement(By.name("password")).sendKeys("1234");
+		driver.findElement(By.id("username")).sendKeys("tony");
+		driver.findElement(By.name("password")).sendKeys("Tony@123");
 	}
 
-	@And("^User clicks on submit button and gets a alert$")
+	@And("^User clicks on submit button$")
 	public void user_clicks_on_submit_button() throws Throwable {
 		driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
-		Thread.sleep(3000);
-		Alert alert = driver.switchTo().alert(); //will switch 
-		String actual = driver.switchTo().alert().getText();
-		assertEquals("Login success", actual);
-		alert.accept();
 	}
 
 	@Then("^User should see a message \"([^\"]*)\"$")
 	public void user_should_see_a(String arg1) throws Throwable {
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		Thread.sleep(3000);
 		String actual = driver.findElement(By.tagName("h1")).getText();
 		assertEquals("User Login Successfull",actual);
 		driver.findElement(By.xpath("//button[contains(text(),'Logout')]")).click();

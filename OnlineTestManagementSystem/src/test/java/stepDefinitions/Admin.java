@@ -2,6 +2,8 @@ package stepDefinitions;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -31,23 +33,18 @@ public class Admin {
 	@When("^Admin enters username and password$")
 	public void admin_enters_username_and_password() throws Throwable {
 		driver.findElement(By.id("username")).sendKeys("rahul");//
-		driver.findElement(By.name("password")).sendKeys("1234");//
+		driver.findElement(By.name("password")).sendKeys("Rahul@123");//
 	}
 
-	@And("^Admin clicks on submit button and gets a alert$")
+	@And("^Admin clicks on submit button$")
 	public void admin_clicks_on_submit_button_and_gets_a_alert() throws Throwable {
 		driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
-		Thread.sleep(3000);
-		Alert alert = driver.switchTo().alert(); //will switch 
-		String actual = driver.switchTo().alert().getText();
-		assertEquals("Login success", actual);
-		alert.accept();
 	}
 
 	@Then("^Admin should see a message \"([^\"]*)\"$")
 	public void admin_should_see_a_message(String arg1) throws Throwable {
 			Thread.sleep(3000);
-			String actual = driver.findElement(By.tagName("h1")).getText();
+			String actual = driver.findElement(By.xpath("//h1[contains(text(),'Admin Login Successfull')]")).getText();
 			assertEquals("Admin Login Successfull",actual);
 			driver.findElement(By.xpath("//button[contains(text(),'Logout')]")).click();
 			driver.close();

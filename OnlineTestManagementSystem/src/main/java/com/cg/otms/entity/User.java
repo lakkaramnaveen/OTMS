@@ -17,7 +17,7 @@ public class User {
 	@Id//primary key
 	@GeneratedValue(generator="mygen",strategy=GenerationType.SEQUENCE)
 	//provides the requirements for id generation with name and type
-	@SequenceGenerator(name="mygen",sequenceName="user_seq",allocationSize=1)
+	@SequenceGenerator(name="mygen",sequenceName="user_sequence",allocationSize=1)
 	//it will specify the sequence
 	@Column(name="user_id")//maps the particular column from table
 	private long userId ;

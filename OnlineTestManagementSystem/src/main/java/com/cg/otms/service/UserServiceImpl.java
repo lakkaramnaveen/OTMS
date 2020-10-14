@@ -2,12 +2,13 @@ package com.cg.otms.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
+import com.cg.otms.controller.UserController;
 import com.cg.otms.dao.IUserDao;
-import com.cg.otms.entity.Test;
 import com.cg.otms.entity.User;
 import com.cg.otms.exception.OtmsException;
 
@@ -16,18 +17,18 @@ import com.cg.otms.exception.OtmsException;
 //it indicates the class as a service class
 public class UserServiceImpl implements IUserService {
 
+	Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	private String str = "USER NOT FOUND";
+	private String user_str = "User is Null";
+	
 	// inorder to achieve loose coupling as we can have many implementation objects
 	// from one service
-
 	// dao object will be injected into service while creating controller in
 	// WebApplicationContext
 	@Autowired
 	IUserDao userDao;
 	
-//	@Autowired
-//	RestTemplate restTemplate;
 
 	@Override
 	public User addUser(User user) throws OtmsException {
@@ -45,10 +46,11 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public User getUserByName(String userName) throws OtmsException {
-		if (userDao.getUserByName(userName)==null) 
+		if (userDao.getUserByName(userName)==null) {
+			logger.info(user_str);
 			throw new OtmsException(str);
+		}
 		// it is handled by global exception handler
-
 		return userDao.getUserByName(userName);//dao method will be invoked
 	}
 
@@ -56,27 +58,21 @@ public class UserServiceImpl implements IUserService {
 	public boolean validateAdmin(String userName, String userPassword) throws OtmsException {
 
 		User user=userDao.getUserByName(userName);
-		if(!(user.getUserPassword().equals(userPassword) && user.isAdmin())) 
+		if(!(user.getUserPassword().equals(userPassword) && user.isAdmin())) { 
+			logger.info(user_str);
 			throw new OtmsException(str);
-
+		}
 		return true;
 	}
 
 	@Override
 	public boolean validateUser(String userName, String userPassword) throws OtmsException {
 		User user=userDao.getUserByName(userName);
-		if(!(user.getUserPassword().equals(userPassword) && !user.isAdmin())) 
+		if(!(user.getUserPassword().equals(userPassword) && !user.isAdmin())) {
+			logger.info(user_str);
 			throw new OtmsException(str);
-
+		}
 		return true;
 	}
 	
-//	@Override
-//	public double getResult(long testId) {
-//		Test test = restTemplate.getForObject("url"+testId,Test.class);
-//		double result = 0;
-//		result = restTemplate.getForObject("url"+testId,Double.class);
-//		test.setTestMarksScored(result);
-//		return test.getTestMarksScored();
-//	}
 }

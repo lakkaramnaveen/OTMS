@@ -14,4 +14,5 @@ public class OnlineTestManagementApplication {
 		SpringApplication.run(OnlineTestManagementApplication.class, args);
 		// this will run or starts the application
 	}
+	
 }

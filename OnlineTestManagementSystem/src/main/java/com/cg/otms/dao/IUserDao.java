@@ -3,9 +3,11 @@ package com.cg.otms.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import com.cg.otms.entity.User;
 
+@Repository
 public interface IUserDao extends JpaRepository<User,Long>  {
 	@Query(value = "from User where userName=:userName")
 	//jpa query is executed it is called by service impl methods

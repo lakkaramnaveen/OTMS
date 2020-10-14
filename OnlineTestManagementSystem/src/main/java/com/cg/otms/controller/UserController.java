@@ -23,6 +23,7 @@ import com.cg.otms.service.IUserService;
 @CrossOrigin("*")    //to achieve cors -> allows resource sharing between different origins
 //integrating with angular it will be useful
 public class UserController {
+	//loose coupling
 	@Autowired// service object will be injected into controller while creating controller in
 	// WebApplicationContext
 	IUserService userService;
@@ -53,26 +54,19 @@ public class UserController {
 	@GetMapping("/user/{userName}")
 	// inorder to map a parameter from uri to method parameters we use @pathvariable
 	public User getUserByName(@PathVariable String userName) throws OtmsException {
+		logger.info("User Name from user");
 		return userService.getUserByName(userName);
 	}
 
 	@GetMapping("/user/login/admin/{userName}/{userPassword}")
-	// inorder to handle the exception we use throws declaration
+	// inorder to handle it global the exception we use throws declaration
 	public ResponseEntity<Boolean> validateAdmin(@PathVariable String userName, @PathVariable String userPassword) throws OtmsException {
-		logger.info("This is the Admin Login info logs"); 
+		logger.info("Admin Login info logs");
 		return new ResponseEntity<>(userService.validateAdmin(userName,userPassword),HttpStatus.ACCEPTED);
 	}
 	@GetMapping("/user/login/{userName}/{userPassword}")
 	public ResponseEntity<Boolean> validateUser(@PathVariable String userName, @PathVariable String userPassword) throws OtmsException {
-		logger.info("This is the User Login info logs");
+		logger.info("User Login info logs");
 		return new ResponseEntity<>(userService.validateUser(userName,userPassword),HttpStatus.ACCEPTED);
 	}
-
-	//we will get the results
-	//	@GetMapping("/user/result/{testId}")
-	//	public double getResult(@PathVariable long testId) {
-	//		return userService.getResult(testId);
-	//	}
-
-
 }

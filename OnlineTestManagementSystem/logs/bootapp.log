@@ -1,8 +1,4 @@
-2020-10-12 12:41:10,157 INFO com.cg.otms.controller.UserController [http-nio-9090-exec-1] This is the user info logs
-2020-10-12 12:41:10,162 WARN com.cg.otms.controller.UserController [http-nio-9090-exec-1] This is the warning logs
-2020-10-12 12:42:18,394 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Starting OnlineTestManagementApplication on DESKTOP-PGMLD5N with PID 9156 (C:\Users\nanin\git\OTMS\OnlineTestManagementSystem\target\classes started by nanin in C:\Users\nanin\git\OTMS\OnlineTestManagementSystem)
-2020-10-12 12:42:18,394 DEBUG com.cg.otms.OnlineTestManagementApplication [restartedMain] Running with Spring Boot v2.3.4.RELEASE, Spring v5.2.9.RELEASE
-2020-10-12 12:42:18,394 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] No active profile set, falling back to default profiles: default
-2020-10-12 12:42:18,868 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Started OnlineTestManagementApplication in 0.504 seconds (JVM running for 429.254)
-2020-10-12 12:42:28,556 INFO com.cg.otms.controller.UserController [http-nio-9090-exec-2] This is the admin info logs
-2020-10-12 12:42:28,557 WARN com.cg.otms.controller.UserController [http-nio-9090-exec-2] This is the warning logs
+2020-10-14 07:26:44,051 INFO com.cg.otms.OnlineTestManagementApplicationTests [main] Starting OnlineTestManagementApplicationTests on DESKTOP-PGMLD5N with PID 620 (started by nanin in C:\Users\nanin\git\OTMS\OnlineTestManagementSystem)
+2020-10-14 07:26:44,060 DEBUG com.cg.otms.OnlineTestManagementApplicationTests [main] Running with Spring Boot v2.3.4.RELEASE, Spring v5.2.9.RELEASE
+2020-10-14 07:26:44,061 INFO com.cg.otms.OnlineTestManagementApplicationTests [main] No active profile set, falling back to default profiles: default
+2020-10-14 07:26:49,376 INFO com.cg.otms.OnlineTestManagementApplicationTests [main] Started OnlineTestManagementApplicationTests in 5.952 seconds (JVM running for 9.092)

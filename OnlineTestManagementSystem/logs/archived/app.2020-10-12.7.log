@@ -1,0 +1,121 @@
+2020-10-12 15:55:12,764 ERROR com.netflix.discovery.DiscoveryClient [DiscoveryClient-HeartbeatExecutor-0] DiscoveryClient_UNKNOWN/DESKTOP-PGMLD5N:9090 - was unable to send heartbeat!
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:867)
+	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1436)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+2020-10-12 15:55:12,766 ERROR com.netflix.discovery.DiscoveryClient [DiscoveryClient-CacheRefreshExecutor-0] DiscoveryClient_UNKNOWN/DESKTOP-PGMLD5N:9090 - was unable to refresh its cache! status = Cannot execute request on any known server
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getApplications(EurekaHttpClientDecorator.java:134)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$6.execute(EurekaHttpClientDecorator.java:137)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getApplications(EurekaHttpClientDecorator.java:134)
+	at com.netflix.discovery.DiscoveryClient.getAndStoreFullRegistry(DiscoveryClient.java:1074)
+	at com.netflix.discovery.DiscoveryClient.fetchRegistry(DiscoveryClient.java:988)
+	at com.netflix.discovery.DiscoveryClient.refreshRegistry(DiscoveryClient.java:1510)
+	at com.netflix.discovery.DiscoveryClient$CacheRefreshThread.run(DiscoveryClient.java:1477)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+2020-10-12 15:55:17,399 ERROR com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient [DiscoveryClient-InstanceInfoReplicator-0] Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused: connect
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187)
+	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123)
+	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27)
+	at com.sun.jersey.api.client.Client.handle(Client.java:652)
+	at com.sun.jersey.api.client.WebResource.handle(WebResource.java:682)
+	at com.sun.jersey.api.client.WebResource.access$200(WebResource.java:74)
+	at com.sun.jersey.api.client.WebResource$Builder.post(WebResource.java:570)
+	at com.netflix.discovery.shared.transport.jersey.AbstractJerseyEurekaHttpClient.register(AbstractJerseyEurekaHttpClient.java:57)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.MetricsCollectingEurekaHttpClient.execute(MetricsCollectingEurekaHttpClient.java:73)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:118)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:850)
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:121)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:121)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:605)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:440)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56)
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173)
+	... 29 common frames omitted
+2020-10-12 15:56:15,717 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Starting OnlineTestManagementApplication on DESKTOP-PGMLD5N with PID 3536 (C:\Users\nanin\git\OTMS\OnlineTestManagementSystem\target\classes started by nanin in C:\Users\nanin\git\OTMS\OnlineTestManagementSystem)
+2020-10-12 15:56:15,720 DEBUG com.cg.otms.OnlineTestManagementApplication [restartedMain] Running with Spring Boot v2.3.4.RELEASE, Spring v5.2.9.RELEASE
+2020-10-12 15:56:15,720 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] No active profile set, falling back to default profiles: default
+2020-10-12 15:56:18,266 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Started OnlineTestManagementApplication in 2.807 seconds (JVM running for 3.662)
+2020-10-12 15:59:04,050 INFO com.cg.otms.controller.UserController [http-nio-9090-exec-1] This is the User Login info logs
+2020-10-12 15:59:04,270 INFO com.cg.otms.controller.UserController [http-nio-9090-exec-2] This is the Admin Login info logs
+2020-10-12 16:02:01,465 INFO com.cg.otms.controller.UserController [http-nio-9090-exec-4] This is the User Login info logs
+2020-10-12 16:13:43,889 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Starting OnlineTestManagementApplication on DESKTOP-PGMLD5N with PID 3536 (C:\Users\nanin\git\OTMS\OnlineTestManagementSystem\target\classes started by nanin in C:\Users\nanin\git\OTMS\OnlineTestManagementSystem)
+2020-10-12 16:13:43,889 DEBUG com.cg.otms.OnlineTestManagementApplication [restartedMain] Running with Spring Boot v2.3.4.RELEASE, Spring v5.2.9.RELEASE
+2020-10-12 16:13:43,889 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] No active profile set, falling back to default profiles: default
+2020-10-12 16:13:44,598 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Started OnlineTestManagementApplication in 0.743 seconds (JVM running for 1049.994)
+2020-10-12 16:13:47,414 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Starting OnlineTestManagementApplication on DESKTOP-PGMLD5N with PID 3536 (C:\Users\nanin\git\OTMS\OnlineTestManagementSystem\target\classes started by nanin in C:\Users\nanin\git\OTMS\OnlineTestManagementSystem)
+2020-10-12 16:13:47,414 DEBUG com.cg.otms.OnlineTestManagementApplication [restartedMain] Running with Spring Boot v2.3.4.RELEASE, Spring v5.2.9.RELEASE
+2020-10-12 16:13:47,415 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] No active profile set, falling back to default profiles: default
+2020-10-12 16:13:48,030 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Started OnlineTestManagementApplication in 0.649 seconds (JVM running for 1053.427)
+2020-10-12 16:14:14,474 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Starting OnlineTestManagementApplication on DESKTOP-PGMLD5N with PID 3536 (C:\Users\nanin\git\OTMS\OnlineTestManagementSystem\target\classes started by nanin in C:\Users\nanin\git\OTMS\OnlineTestManagementSystem)
+2020-10-12 16:14:14,474 DEBUG com.cg.otms.OnlineTestManagementApplication [restartedMain] Running with Spring Boot v2.3.4.RELEASE, Spring v5.2.9.RELEASE
+2020-10-12 16:14:14,474 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] No active profile set, falling back to default profiles: default
+2020-10-12 16:14:14,935 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Started OnlineTestManagementApplication in 0.494 seconds (JVM running for 1080.332)
+2020-10-12 16:15:08,923 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Starting OnlineTestManagementApplication on DESKTOP-PGMLD5N with PID 3536 (C:\Users\nanin\git\OTMS\OnlineTestManagementSystem\target\classes started by nanin in C:\Users\nanin\git\OTMS\OnlineTestManagementSystem)
+2020-10-12 16:15:08,923 DEBUG com.cg.otms.OnlineTestManagementApplication [restartedMain] Running with Spring Boot v2.3.4.RELEASE, Spring v5.2.9.RELEASE
+2020-10-12 16:15:08,924 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] No active profile set, falling back to default profiles: default
+2020-10-12 16:15:09,402 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Started OnlineTestManagementApplication in 0.508 seconds (JVM running for 1134.799)
+2020-10-12 16:15:20,503 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Starting OnlineTestManagementApplication on DESKTOP-PGMLD5N with PID 3536 (C:\Users\nanin\git\OTMS\OnlineTestManagementSystem\target\classes started by nanin in C:\Users\nanin\git\OTMS\OnlineTestManagementSystem)
+2020-10-12 16:15:20,503 DEBUG com.cg.otms.OnlineTestManagementApplication [restartedMain] Running with Spring Boot v2.3.4.RELEASE, Spring v5.2.9.RELEASE
+2020-10-12 16:15:20,503 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] No active profile set, falling back to default profiles: default
+2020-10-12 16:15:20,948 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Started OnlineTestManagementApplication in 0.481 seconds (JVM running for 1146.344)
+2020-10-12 16:15:28,284 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Starting OnlineTestManagementApplication on DESKTOP-PGMLD5N with PID 3536 (C:\Users\nanin\git\OTMS\OnlineTestManagementSystem\target\classes started by nanin in C:\Users\nanin\git\OTMS\OnlineTestManagementSystem)
+2020-10-12 16:15:28,285 DEBUG com.cg.otms.OnlineTestManagementApplication [restartedMain] Running with Spring Boot v2.3.4.RELEASE, Spring v5.2.9.RELEASE
+2020-10-12 16:15:28,285 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] No active profile set, falling back to default profiles: default
+2020-10-12 16:15:28,730 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Started OnlineTestManagementApplication in 0.475 seconds (JVM running for 1154.127)
+2020-10-12 16:15:35,729 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Starting OnlineTestManagementApplication on DESKTOP-PGMLD5N with PID 3536 (C:\Users\nanin\git\OTMS\OnlineTestManagementSystem\target\classes started by nanin in C:\Users\nanin\git\OTMS\OnlineTestManagementSystem)
+2020-10-12 16:15:35,729 DEBUG com.cg.otms.OnlineTestManagementApplication [restartedMain] Running with Spring Boot v2.3.4.RELEASE, Spring v5.2.9.RELEASE
+2020-10-12 16:15:35,729 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] No active profile set, falling back to default profiles: default
+2020-10-12 16:15:36,380 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Started OnlineTestManagementApplication in 0.685 seconds (JVM running for 1161.776)
+2020-10-12 16:17:18,443 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Starting OnlineTestManagementApplication on DESKTOP-PGMLD5N with PID 3536 (C:\Users\nanin\git\OTMS\OnlineTestManagementSystem\target\classes started by nanin in C:\Users\nanin\git\OTMS\OnlineTestManagementSystem)
+2020-10-12 16:17:18,444 DEBUG com.cg.otms.OnlineTestManagementApplication [restartedMain] Running with Spring Boot v2.3.4.RELEASE, Spring v5.2.9.RELEASE
+2020-10-12 16:17:18,444 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] No active profile set, falling back to default profiles: default
+2020-10-12 16:17:18,918 INFO com.cg.otms.OnlineTestManagementApplication [restartedMain] Started OnlineTestManagementApplication in 0.502 seconds (JVM running for 1264.314)
